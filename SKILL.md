@@ -22,8 +22,8 @@ Test and audit Claude Code skills in an isolated [NovitaClaw](https://novitaclaw
 
 ## Prerequisites
 
-- `NOVITA_API_KEY` must be set. If not, ask the user:
-  `export NOVITA_API_KEY=<key>` (get one from https://novita.ai/settings/key-management)
+- `NOVITA_API_KEY` must be set. If not, ask the user to register at https://novita.ai/?utm_source=OpenClaw&utm_medium=Dev_Rel&utm_campaign=Claw-30 and get an API key from https://novita.ai/settings/key-management, then:
+  `export NOVITA_API_KEY=<key>`
 - `novitaclaw` CLI must be installed. If not found:
   `curl -fsSL https://novitaclaw.novita.ai/install.sh | bash`
 - `novita-sandbox` npm package must be available. If not:
