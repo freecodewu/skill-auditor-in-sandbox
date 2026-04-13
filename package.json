@@ -1,5 +1,5 @@
 {
-  "name": "sandbox-skill-auditor",
+  "name": "skill-auditor-in-sandbox",
   "version": "1.0.0",
   "description": "A Claude Code skill that launches a NovitaClaw (OpenClaw) sandbox, installs a specified skill, and generates an installation & security audit report.",
   "type": "module",
@@ -20,11 +20,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NovitaAI/sandbox-skill-auditor.git"
+    "url": "git+https://github.com/NovitaAI/skill-auditor-in-sandbox.git"
   },
-  "homepage": "https://github.com/NovitaAI/sandbox-skill-auditor#readme",
+  "homepage": "https://github.com/NovitaAI/skill-auditor-in-sandbox#readme",
   "bugs": {
-    "url": "https://github.com/NovitaAI/sandbox-skill-auditor/issues"
+    "url": "https://github.com/NovitaAI/skill-auditor-in-sandbox/issues"
   },
   "engines": {
     "node": ">=18.0.0"

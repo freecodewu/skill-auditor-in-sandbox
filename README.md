@@ -1,12 +1,12 @@
-# sandbox-skill-auditor
+# skill-auditor-in-sandbox
 
 A Claude Code skill that launches a NovitaClaw (OpenClaw) sandbox, installs a specified skill, and generates an installation & security audit report.
 
 ## Project Structure
 
 ```
-sandbox-skill-auditor/
-├── sandbox-skill-auditor.md           # Skill definition (dispatcher + report template)
+skill-auditor-in-sandbox/
+├── skill-auditor-in-sandbox.md           # Skill definition (dispatcher + report template)
 ├── scripts/
 │   ├── install-skill.mjs              # Connects to sandbox, installs skill, outputs JSON
 │   └── audit-skill.mjs               # Runs security audit in sandbox, outputs JSON
@@ -23,15 +23,15 @@ The skill file is a lightweight dispatcher. The heavy lifting (sandbox SDK calls
 Clone this repo and use it directly:
 
 ```bash
-git clone https://github.com/NovitaAI/sandbox-skill-auditor.git
-cd sandbox-skill-auditor
+git clone https://github.com/NovitaAI/skill-auditor-in-sandbox.git
+cd skill-auditor-in-sandbox
 npm install
 ```
 
 Or copy into an existing project:
 
 ```bash
-cp sandbox-skill-auditor.md /path/to/project/.claude/skills/
+cp skill-auditor-in-sandbox.md /path/to/project/.claude/skills/
 cp -r scripts/ /path/to/project/scripts/
 ```
 
@@ -49,13 +49,13 @@ cp -r scripts/ /path/to/project/scripts/
 In Claude Code, invoke the skill with:
 
 ```
-/sandbox-skill-auditor <skill-name>
+/skill-auditor-in-sandbox <skill-name>
 ```
 
 Example:
 
 ```
-/sandbox-skill-auditor pskoett/self-improving-agent
+/skill-auditor-in-sandbox pskoett/self-improving-agent
 ```
 
 ### What it does

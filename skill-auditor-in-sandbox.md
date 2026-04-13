@@ -1,5 +1,5 @@
 ---
-name: sandbox-skill-auditor
+name: skill-auditor-in-sandbox
 description: >
   Launch a NovitaClaw (OpenClaw) sandbox, install a specified skill,
   and generate an installation & security report.
@@ -7,7 +7,7 @@ description: >
 argument-hint: "<skill-name>"
 ---
 
-# Sandbox Skill Auditor
+# Skill Auditor in Sandbox
 
 You are given a skill name (or identifier) as `$ARGUMENTS`. Your job is to launch a sandbox, install the skill, run a security audit, and generate a report.
 
