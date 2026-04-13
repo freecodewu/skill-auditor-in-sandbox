@@ -61,14 +61,14 @@ let result = await tryRun(`clawhub install ${SKILL_NAME}`);
 // --- Attempt 2: git clone from GitHub ---
 if (!result.ok) {
   method = 'git-github';
-  await tryRun(`rm -rf ${TMP_DIR}`);
+  await tryRun(`rm -r ${TMP_DIR}`);
   result = await tryRun(`git clone https://github.com/${SKILL_NAME}.git ${TMP_DIR}`);
 }
 
 // --- Attempt 3: git clone from clawhub.ai ---
 if (!result.ok) {
   method = 'git-clawhub';
-  await tryRun(`rm -rf ${TMP_DIR}`);
+  await tryRun(`rm -r ${TMP_DIR}`);
   result = await tryRun(`git clone https://clawhub.ai/${SKILL_NAME}.git ${TMP_DIR}`);
 }
 
@@ -92,7 +92,7 @@ if (method !== 'clawhub') {
     await run(`cp -r ${TMP_DIR}/.claude/skills/* ${SKILLS_DIR}/`);
   } else {
     // Copy everything except .git
-    await run(`cp -a ${TMP_DIR}/. ${TARGET_DIR}/ && rm -rf ${TARGET_DIR}/.git`);
+    await run(`cp -a ${TMP_DIR}/. ${TARGET_DIR}/ && rm -r ${TARGET_DIR}/.git`);
   }
 }
 

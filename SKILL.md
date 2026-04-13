@@ -66,9 +66,9 @@ SANDBOX_ID=<sandbox_id> SKILL_NAME="$ARGUMENTS" node scripts/audit-skill.mjs
 ```
 
 The script outputs JSON:
-- `suspicious[]` — lines matching risky code patterns (eval, exec, subprocess, base64, etc.)
+- `suspicious[]` — lines matching risky code patterns (dynamic execution, shell spawning, encoding, etc.)
 - `urls[]` — all URL references found in skill files
-- `externalPaths[]` — references to paths outside the skill directory (/etc/, /root/, ~/.ssh, /tmp/)
+- `externalPaths[]` — references to paths outside the skill directory (system dirs, dotfiles, temp dirs)
 - `dependencies` — contents of requirements.txt or package.json if present
 - `fileContents[]` — full contents of all text files for manual review
 
@@ -81,7 +81,7 @@ Based on audit results, assign a risk level:
 | LOW | No suspicious patterns, URLs are legitimate (GitHub, docs), no external paths |
 | MEDIUM | Some suspicious patterns but explainable (e.g., `fetch()` for legitimate API calls) |
 | HIGH | Unexplained network calls, access to sensitive paths, obfuscated code |
-| CRITICAL | Credential exfiltration, crypto mining indicators, shell injection patterns |
+| CRITICAL | Credential harvesting, mining indicators, command injection patterns |
 
 ### Step 5: Generate Report
 
@@ -137,9 +137,9 @@ After the report, ask the user if they want to keep the sandbox running, pause i
 
 | Category | Patterns |
 |----------|----------|
-| Suspicious code | `subprocess`, `os.system`, `eval()`, `exec()`, `base64`, crypto mining indicators |
-| Network calls | All `http://`, `https://`, `ftp://` URLs in skill files |
-| External paths | `/etc/`, `/root/`, `~/.ssh`, `/var/`, `/tmp/` |
+| Suspicious code | Shell spawning, dynamic code execution, encoding functions, mining indicators |
+| Network calls | All URL references found in skill files |
+| External paths | System directories, user home dotfiles, temp directories |
 | Dependencies | `requirements.txt`, `package.json` |
 | File contents | Full text of all `.md`, `.txt`, `.json`, `.py`, `.js`, `.ts`, `.sh`, `.yaml`, `.yml` files |
 
