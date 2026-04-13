@@ -23,7 +23,7 @@ The skill file is a lightweight dispatcher. The heavy lifting (sandbox SDK calls
 Clone this repo and use it directly:
 
 ```bash
-git clone https://github.com/NovitaAI/skill-auditor-in-sandbox.git
+git clone https://github.com/freecodewu/skill-auditor-in-sandbox.git
 cd skill-auditor-in-sandbox
 npm install
 ```

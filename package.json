@@ -16,15 +16,15 @@
     "security-audit",
     "skill-testing"
   ],
-  "author": "NovitaAI",
+  "author": "freecodewu",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NovitaAI/skill-auditor-in-sandbox.git"
+    "url": "git+https://github.com/freecodewu/skill-auditor-in-sandbox.git"
   },
-  "homepage": "https://github.com/NovitaAI/skill-auditor-in-sandbox#readme",
+  "homepage": "https://github.com/freecodewu/skill-auditor-in-sandbox#readme",
   "bugs": {
-    "url": "https://github.com/NovitaAI/skill-auditor-in-sandbox/issues"
+    "url": "https://github.com/freecodewu/skill-auditor-in-sandbox/issues"
   },
   "engines": {
     "node": ">=18.0.0"
