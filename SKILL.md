@@ -131,7 +131,15 @@ Output a structured report:
 - To stop (permanent): `novitaclaw stop <sandbox_id>`
 ```
 
-After the report, ask the user if they want to keep the sandbox running, pause it, or stop it.
+After generating the report, automatically pause the sandbox to save costs:
+
+```bash
+novitaclaw pause <sandbox_id> --json
+```
+
+Then inform the user that the sandbox has been paused and can be resumed or stopped:
+- To resume: `novitaclaw resume <sandbox_id>`
+- To stop (permanent): `novitaclaw stop <sandbox_id>`
 
 ## What Gets Scanned
 
