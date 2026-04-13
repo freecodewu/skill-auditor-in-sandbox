@@ -1,15 +1,24 @@
 ---
 name: skill-auditor-in-sandbox
-description: >
-  Launch a NovitaClaw (OpenClaw) sandbox, install a specified skill,
-  and generate an installation & security report.
-  Use when the user wants to test an OpenClaw/NovitaClaw skill in an isolated sandbox environment.
+description: "Launch a NovitaClaw (OpenClaw) sandbox, install a specified skill, and generate an installation & security audit report. Use when: (1) You want to test a community skill before installing it locally, (2) You need a security audit of a skill's code, hooks, and dependencies, (3) You want to verify a skill from ClawHub or GitHub in an isolated environment."
 argument-hint: "<skill-name>"
+metadata:
+  source: https://github.com/freecodewu/skill-auditor-in-sandbox
+  homepage: https://github.com/freecodewu/skill-auditor-in-sandbox
 ---
 
 # Skill Auditor in Sandbox
 
-You are given a skill name (or identifier) as `$ARGUMENTS`. Your job is to launch a sandbox, install the skill, run a security audit, and generate a report.
+Test and audit Claude Code skills in an isolated [NovitaClaw](https://novitaclaw.novita.ai) (OpenClaw) sandbox before installing them locally. The skill launches a sandbox, installs the target skill, runs a security scan, and generates a structured risk report.
+
+## Quick Reference
+
+| Situation | Action |
+|-----------|--------|
+| Test a ClawHub skill | `/skill-auditor-in-sandbox owner/skill-name` |
+| Test a GitHub skill | `/skill-auditor-in-sandbox owner/repo-name` |
+| Review the report | Check risk level, suspicious patterns, URLs, external paths |
+| After review | Pause or stop the sandbox to save costs |
 
 ## Prerequisites
 
@@ -20,7 +29,11 @@ You are given a skill name (or identifier) as `$ARGUMENTS`. Your job is to launc
 - `novita-sandbox` npm package must be available. If not:
   `npm install novita-sandbox`
 
-## Step 1: Launch Sandbox
+## Usage
+
+You are given a skill name (or identifier) as `$ARGUMENTS`. Your job is to launch a sandbox, install the skill, run a security audit, and generate a report.
+
+### Step 1: Launch Sandbox
 
 ```bash
 novitaclaw launch --json
@@ -32,7 +45,7 @@ If launch fails, check `error_code` and `remediation` fields:
 - `MISSING_API_KEY` → ask user for API key
 - `SANDBOX_TIMEOUT` → retry with `--timeout 300`
 
-## Step 2: Install Skill
+### Step 2: Install Skill
 
 Run the install script from the project root:
 
@@ -44,7 +57,7 @@ The script outputs JSON: `{ success, method, skillDir, files, error? }`.
 - If `success` is false, show the error and stop.
 - Note the `method` used (clawhub / git-github / git-clawhub) for the report.
 
-## Step 3: Security Audit
+### Step 3: Security Audit
 
 Run the audit script:
 
@@ -59,7 +72,7 @@ The script outputs JSON:
 - `dependencies` — contents of requirements.txt or package.json if present
 - `fileContents[]` — full contents of all text files for manual review
 
-## Step 4: Assess Risk
+### Step 4: Assess Risk
 
 Based on audit results, assign a risk level:
 
@@ -70,7 +83,7 @@ Based on audit results, assign a risk level:
 | HIGH | Unexplained network calls, access to sensitive paths, obfuscated code |
 | CRITICAL | Credential exfiltration, crypto mining indicators, shell injection patterns |
 
-## Step 5: Generate Report
+### Step 5: Generate Report
 
 Output a structured report:
 
@@ -120,8 +133,23 @@ Output a structured report:
 
 After the report, ask the user if they want to keep the sandbox running, pause it, or stop it.
 
+## What Gets Scanned
+
+| Category | Patterns |
+|----------|----------|
+| Suspicious code | `subprocess`, `os.system`, `eval()`, `exec()`, `base64`, crypto mining indicators |
+| Network calls | All `http://`, `https://`, `ftp://` URLs in skill files |
+| External paths | `/etc/`, `/root/`, `~/.ssh`, `/var/`, `/tmp/` |
+| Dependencies | `requirements.txt`, `package.json` |
+| File contents | Full text of all `.md`, `.txt`, `.json`, `.py`, `.js`, `.ts`, `.sh`, `.yaml`, `.yml` files |
+
 ## Important Notes
 
 - Always use `--json` flag with novitaclaw commands.
 - The sandbox auto-terminates based on `keep_alive`. Suggest pause to save costs.
 - Prefer `pause` over `stop` — stop is irreversible. Confirm before stopping.
+
+## Attribution
+
+- Source: https://github.com/freecodewu/skill-auditor-in-sandbox
+- Powered by [NovitaClaw](https://novitaclaw.novita.ai) sandbox infrastructure
