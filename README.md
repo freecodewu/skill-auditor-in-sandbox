@@ -1,6 +1,6 @@
 # skill-auditor-in-sandbox
 
-A [Claude Code](https://claude.ai/claude-code) skill that launches a [NovitaClaw](https://novitaclaw.novita.ai) (OpenClaw) sandbox, installs a specified skill, and generates an installation & security audit report.
+A [Claude Code](https://claude.ai/claude-code) skill that launches a [NovitaClaw](https://novita.ai/docs/guides/novitaclaw) (OpenClaw) sandbox, installs a specified skill, and generates an installation & security audit report.
 
 Test community skills in an isolated environment before installing them locally.
 

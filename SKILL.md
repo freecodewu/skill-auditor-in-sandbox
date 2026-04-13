@@ -9,7 +9,7 @@ metadata:
 
 # Skill Auditor in Sandbox
 
-Test and audit Claude Code skills in an isolated [NovitaClaw](https://novitaclaw.novita.ai) (OpenClaw) sandbox before installing them locally. The skill launches a sandbox, installs the target skill, runs a security scan, and generates a structured risk report.
+Test and audit Claude Code skills in an isolated [NovitaClaw](https://novita.ai/docs/guides/novitaclaw) (OpenClaw) sandbox before installing them locally. The skill launches a sandbox, installs the target skill, runs a security scan, and generates a structured risk report.
 
 ## Quick Reference
 
@@ -160,4 +160,4 @@ Then inform the user that the sandbox has been paused and can be resumed or stop
 ## Attribution
 
 - Source: https://github.com/freecodewu/skill-auditor-in-sandbox
-- Powered by [NovitaClaw](https://novitaclaw.novita.ai) sandbox infrastructure
+- Powered by [NovitaClaw](https://novita.ai/docs/guides/novitaclaw) sandbox infrastructure
